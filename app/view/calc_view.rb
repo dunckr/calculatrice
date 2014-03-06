@@ -1,4 +1,0 @@
-class CalView < UIView
-
-
-end

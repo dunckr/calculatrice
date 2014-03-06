@@ -4,7 +4,7 @@ class AppDelegate
     @window.makeKeyAndVisible
 
     @window.rootViewController =
-      CalController.alloc.init
+      CalcController.alloc.init
     true
   end
 end
