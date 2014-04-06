@@ -33,4 +33,13 @@ describe "View 'calc'" do
     @label.text.should == '9221'
   end
 
+  it "should be able to add up" do
+    tap '1'
+    tap '5'
+    tap '+'
+    tap '3'
+    tap '='
+    @label.text.should == '18'
+  end
+
 end

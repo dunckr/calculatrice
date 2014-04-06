@@ -35,8 +35,20 @@ class CalcView < UIView
   end
 
   def number(sender)
-    @count = @count + sender.titleLabel.text
-    @label.text = @count.to_s
+    operation = sender.titleLabel.text
+
+    # if operation.is_numeric?
+    #   @count = @count + sender.titleLabel.text
+    # else
+    #   if operation == '='
+    #     @label.text = @operand + @label.text
+    #   else
+    #     @operation = operation
+    #     @operand = @label.text
+    #   end
+    # end
+    # @label.text = @count.to_s
+    @label.text = operation.to_s
   end
 
 end
