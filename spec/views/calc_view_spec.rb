@@ -32,4 +32,18 @@ describe "View 'calc'" do
     @label.text.should == '18'
   end
 
+  it "should be able to clear" do
+    tap '9'
+    tap 'C'
+    @label.text.should == ''
+  end
+
+  it "should be able to subtract" do
+    tap '8'
+    tap '-'
+    tap '5'
+    tap '='
+    @label.text.should == '3'
+  end
+
 end

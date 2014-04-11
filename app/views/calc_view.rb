@@ -40,20 +40,24 @@ class CalcView < UIView
 
   def number(sender)
     operation = sender.titleLabel.text.to_s
-
     if isDigit operation
       @current += operation
     else
 
-      if operation == '='
+      if operation == '=' and @operand
 
-        if @operand
+        if @operand == '+'
           @current = (@previous.to_i + @current.to_i).to_s
+          @previous = @operand = ''
 
-          @previous = ''
-          @operand = ''
+        elsif @operand == '-'
+          @current = (@previous.to_i - @current.to_i).to_s
+          @previous = @operand = ''
         end
 
+
+      elsif operation == 'C'
+        @previous = @current = @operand = ''
       else
         @previous = @current
         @operand = operation
