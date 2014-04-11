@@ -55,12 +55,12 @@ describe "View 'calc'" do
   end
 
   it "should be able to divide" do
-    tap '6'
-    tap '4'
-    tap '/'
     tap '3'
+    tap '9'
+    tap '/'
+    tap '2'
     tap '='
-    @label.text.should == '3'
+    @label.text.should == '19'
   end
 
   it "should be able to make negative" do
@@ -76,6 +76,22 @@ describe "View 'calc'" do
     tap '9'
     tap '='
     @label.text.should == '8'
+  end
+
+  it "should be able to chain computations" do
+    tap '1'
+    tap '5'
+    tap '+'
+    tap '3'
+    tap '='
+    tap '/'
+    tap '9'
+    tap '='
+    tap 'neg'
+    tap '*'
+    tap '6'
+    tap '='
+    @label.text.should == '-12'
   end
 
 end

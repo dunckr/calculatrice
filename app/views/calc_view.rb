@@ -48,21 +48,22 @@ class CalcView < UIView
 
         if @operand == '+'
           @current = (@previous.to_i + @current.to_i).to_s
-          @previous = @operand = ''
 
         elsif @operand == '-'
           @current = (@previous.to_i - @current.to_i).to_s
-          @previous = @operand = ''
 
         elsif @operand == '*'
           @current = (@previous.to_i * @current.to_i).to_s
-          @previous = @operand = ''
+
+        elsif @operand == '/'
+          @current = (@previous.to_i / @current.to_i).to_s
 
         elsif @operand == '%'
           @current = (@previous.to_i % @current.to_i).to_s
-          @previous = @operand = ''
 
         end
+
+        @previous = @operand = ''
 
       elsif operation == 'C'
         @previous = @current = @operand = ''
