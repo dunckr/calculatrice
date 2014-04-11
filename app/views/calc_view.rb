@@ -2,7 +2,7 @@ class CalcView < UIView
 
   def initWithFrame(frame)
     if super
-      @count = ''
+      @current = ''
       addLabel
       addButtons
     end
@@ -13,7 +13,7 @@ class CalcView < UIView
     @label = UILabel.alloc.initWithFrame [[0, 0], [320, 145]]
     @label.textColor = UIColor.blackColor
     @label.font = UIFont.systemFontOfSize 100
-    @label.text = @count
+    @label.text = @current
     @label.adjustsFontSizeToFitWidth = true
     @label.textAlignment = NSTextAlignmentRight
     @label.backgroundColor = UIColor.whiteColor
@@ -34,21 +34,34 @@ class CalcView < UIView
     addSubview button
   end
 
-  def number(sender)
-    operation = sender.titleLabel.text
+  def isDigit(value)
+    /\d/ =~ value
+  end
 
-    # if operation.is_numeric?
-    #   @count = @count + sender.titleLabel.text
-    # else
-    #   if operation == '='
-    #     @label.text = @operand + @label.text
-    #   else
-    #     @operation = operation
-    #     @operand = @label.text
-    #   end
-    # end
-    # @label.text = @count.to_s
-    @label.text = operation.to_s
+  def number(sender)
+    operation = sender.titleLabel.text.to_s
+
+    if isDigit operation
+      @current += operation
+    else
+
+      if operation == '='
+
+        if @operand
+          @current = (@previous.to_i + @current.to_i).to_s
+
+          @previous = ''
+          @operand = ''
+        end
+
+      else
+        @previous = @current
+        @operand = operation
+        @current = ''
+      end
+    end
+
+    @label.text = @current
   end
 
 end

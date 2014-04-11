@@ -9,23 +9,13 @@ describe "View 'calc'" do
     @label.text.should == ''
   end
 
-  it "should be able to set the display" do
+  it "should be able to display numbers" do
     tap '1'
     tap '2'
     @label.text.should == '12'
   end
 
-  it "should be able to set the display2" do
-    tap '4'
-    tap '5'
-    @label.text.should == '45'
-  end
-  it "should be able to set the display3" do
-    tap '7'
-    tap '8'
-    @label.text.should == '78'
-  end
-  it "should be able to set the display4" do
+  it "should be able to display different numbers" do
     tap '9'
     tap '2'
     tap '2'
@@ -33,7 +23,7 @@ describe "View 'calc'" do
     @label.text.should == '9221'
   end
 
-  it "should be able to add up" do
+  it "should be able to add" do
     tap '1'
     tap '5'
     tap '+'
