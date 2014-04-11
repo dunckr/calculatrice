@@ -46,4 +46,36 @@ describe "View 'calc'" do
     @label.text.should == '3'
   end
 
+  it "should be able to multiply" do
+    tap '4'
+    tap '*'
+    tap '9'
+    tap '='
+    @label.text.should == '36'
+  end
+
+  it "should be able to divide" do
+    tap '6'
+    tap '4'
+    tap '/'
+    tap '3'
+    tap '='
+    @label.text.should == '3'
+  end
+
+  it "should be able to make negative" do
+    tap '7'
+    tap 'neg'
+    @label.text.should == '-7'
+  end
+
+  it "should be able to get the modulus" do
+    tap '9'
+    tap '8'
+    tap '%'
+    tap '9'
+    tap '='
+    @label.text.should == '8'
+  end
+
 end
